@@ -51,7 +51,7 @@ Types
 -----
 
 ``Monad``
-    The base monad type. New monads should be subtypes of this type, and must implement either ``fmap`` and ``bind``, or ``join`` (the default ``mreturn`` is usually acceptable).
+    The base monad type. New monads should be subtypes of this type, and must implement either ``fmap`` and ``join``, or ``bind`` (the default ``mreturn`` is usually acceptable).
 
 ``Identity``
     The identity monad. While it isn't very interesting, it might be a good reference if you are implementing your own monads.
@@ -120,7 +120,7 @@ Implementing a monad
 
 To implement your own monad, you will need to create a new type that is a subtype of either ``Monad`` or ``MonadPlus`` and implements either ``bind`` and ``fmap``, or ``join``, each of which you will need to ``import`` from ``Monads``. The methods you define should obey the following rules::
 
-    bind(f, mreturn(M, a))) == f(a)
+    bind(f, mreturn(M, a)) == f(a)
 
     bind((x) -> mreturn(M, x), m) == m
 
